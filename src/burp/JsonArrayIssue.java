@@ -15,7 +15,9 @@ public class JsonArrayIssue implements IScanIssue {
 		"The contents of the payload <b>must be inspected manually</b> to see if " +
 		"the response contains <b>sensitive information tied to the session</b> and " +
 		"whether the input parameters (if there are any) can be replicated " +
-		"by an attacker.";
+		"by an attacker." +
+		"<br><br>" +
+		"<b>Note:</b> this issue is reported only <b>once per URL</b>";
 
 	private static final String REMEDIATION =
 		"<ul><li>" + String.join("</li><li>",
