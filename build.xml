@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="burp-json-array" default="plugin">
+	<target name="plugin" depends="classes">
+		<zip destfile="burp-json-array.jar">
+			<fileset dir="build">
+				<include name="burp/BurpExtender.class"/>
+				<include name="burp/JsonArrayIssue.class"/>
+			</fileset>
+		</zip>
+	</target>
+	<target name="classes">
+		<mkdir dir="build"/>
+		<javac srcdir="src:api" destdir="build" includeantruntime="false" />
+	</target>
+	<target name="clean">
+		<delete dir="build"/>
+		<delete file="burp-json-array.jar"/>
+	</target>
+</project>
