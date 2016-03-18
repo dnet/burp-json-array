@@ -1,6 +1,9 @@
 JSON array issues for Burp Suite
 ================================
 
+See [section JSON Security of the Flask Security Considerations](http://flask.pocoo.org/docs/security/#json-security)
+for a good writeup on the issue.
+
 Building
 --------
 
