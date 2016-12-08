@@ -23,8 +23,11 @@ public class BurpExtender implements IBurpExtender, IScannerCheck
 				response[response.length - 1] != (byte)']') return null;
 		IRequestInfo ri = helpers.analyzeRequest(baseRequestResponse.getHttpService(),
 				baseRequestResponse.getRequest());
+		byte[] request = baseRequestResponse.getRequest();
+		boolean isGetRequest = request[0] == (byte)'G' && request[1] == (byte)'E' &&
+			request[2] == (byte)'T' && request[3] == (byte)' ';
 		return Collections.singletonList((IScanIssue)new JsonArrayIssue(
-					baseRequestResponse, ri.getUrl()));
+					baseRequestResponse, ri.getUrl(), isGetRequest));
 	}
 
 	@Override

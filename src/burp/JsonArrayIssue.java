@@ -5,6 +5,7 @@ import java.net.URL;
 public class JsonArrayIssue implements IScanIssue {
 	private final IHttpRequestResponse[] httpMessages;
 	private final URL url;
+	private final boolean isGetRequest;
 
 	private static final String ISSUE_NAME = "Top-level Array in JSON response";
 	private static final String ISSUE_DETAIL =
@@ -32,9 +33,10 @@ public class JsonArrayIssue implements IScanIssue {
 		"writeup on the issue.";
 
 	public JsonArrayIssue(IHttpRequestResponse baseRequestResponse,
-			URL url) {
+			URL url, boolean isGetRequest) {
 		this.httpMessages = new IHttpRequestResponse[] { baseRequestResponse };
 		this.url = url;
+		this.isGetRequest = isGetRequest;
 	}
 
 	@Override public String getIssueDetail() { return ISSUE_DETAIL; }
@@ -46,6 +48,6 @@ public class JsonArrayIssue implements IScanIssue {
 	@Override public int getIssueType() { return 0x08000000; }
 	@Override public String getRemediationBackground() { return null; }
 	@Override public String getRemediationDetail() { return REMEDIATION; }
-	@Override public String getSeverity() { return "Medium"; }
+	@Override public String getSeverity() { return isGetRequest ? "Medium" : "Information"; }
 	@Override public URL getUrl() { return url; }
 }
